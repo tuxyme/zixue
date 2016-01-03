@@ -1,0 +1,12 @@
+MANIFEST
+build/
+dist/
+local/
+node_modules/
+.idea/
+**/static
+.tmp
+platforms/
+plugins/
+hooks/
+www/*

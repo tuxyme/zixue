@@ -1,0 +1,13 @@
+{
+  "name": "player",
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "browser-sync": "^2.9.12",
+    "gulp-concat": "^2.6.0",
+    "gulp-jsmin": "^0.1.5",
+    "gulp-rimraf": "^0.2.0",
+    "jschardet": "^1.4.1"
+  }
+}

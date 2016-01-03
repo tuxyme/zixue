@@ -1,0 +1,396 @@
+html {
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: #222;
+}
+
+body {
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+    color: #333;
+    height: 100%;
+    width: 100%;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+#page_main {
+    height: 100%;
+}
+
+/* page layout */
+
+.header {
+    height: 50px;
+    color: #bbb;
+    line-height: 50px;
+}
+
+#videoContainer {
+    width:100%;
+    height:calc(100% - 50px);
+    margin:0;
+    position: relative;
+}
+
+div.overlay {
+    display: none;
+    position: absolute;
+    width:100%;
+    height: calc(100% - 250px);
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    z-index: 100;
+    overflow-y: auto;
+    text-align: center;
+}
+
+video {
+    position: absolute;
+    width:100%;
+    height: calc(100% - 250px);
+    background-color: #000;
+}
+
+div.panel {
+    position: absolute;
+    height: 250px;
+    width: 100%;
+    bottom: 0px;
+}
+
+/* controls */
+
+button {
+    height: 24px;
+    width: 24px;
+    background-image: url('../images/controls.png');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100%;
+    border: none;
+    outline: none;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* header content */
+
+.header input[type=file] {
+    display: none;
+}
+
+div.header button {
+    float: right;
+    margin: 10px 5px 10px 5px;
+}
+
+div.header input[type=range] {
+    float: right;
+    margin: 18px 0px 18px 5px;
+    height: 8px;
+}
+
+div.header button:first-child {
+    float: left;
+}
+
+button#files {
+    height: 30px;
+    width: 30px;
+    background-position: 0 -210px;
+}
+
+button#files:hover {
+    background-color: #444;
+}
+
+button#info {
+    background-image: url('../images/options.png');
+    background-position: 0 -120px;
+    float: right;
+}
+button#info.active {
+    background-position: 0 -96px;
+}
+
+button#autopause {
+    background-image: url('../images/options.png');
+    background-position: 0 -24px;
+    float: right;
+}
+button#autopause.active {
+    background-position: 0 0px;
+}
+
+button#showsubs {
+    background-image: url('../images/options.png');
+    background-position: 0 -72px;
+}
+button#showsubs.active {
+    background-position: 0 -48px;
+}
+
+button#speaker.muted {
+    background-position: 0px -120px;
+}
+
+div.title {
+    display: inline-block;
+    line-height: 30px;
+    margin-left: 5px;
+}
+
+/* overlay content */
+
+div.overlay span {
+    color: #ccc;
+    font-size: 90%;
+    font-weight: normal;
+    text-align: left;
+    display: inline-block;
+    max-width: 600px;
+    padding: 20px;
+}
+
+div.overlay.show {
+    display: block;
+}
+
+div.overlay.intro_proc {
+    text-align: center;
+    display: block;
+}
+
+div.overlay a {
+    color: #e44;
+}
+
+div.overlay span h1 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 100%;
+}
+
+/* video controls */
+.controls, .controls li {
+    padding:0;
+}
+
+.controls {
+    display:block;
+    list-style-type:none;
+    overflow: hidden;
+    background:transparent;
+    padding-bottom: 0px;
+}
+
+.controls li {
+    float:left;
+    margin: 0 0 0 20px;
+}
+
+.controls li > span {
+    font-size: 70%;
+    color: #aaa;
+    height: 100%;
+    line-height: 24px;
+}
+
+.controls button {
+    text-align:center;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    height: 24px;
+    width: 25px;
+    background-size: 80%;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url('../images/controls.png');
+}
+
+button:hover {
+    background-color: #333;
+}
+
+#stop {
+    background-position: 0px 2px;
+}
+
+#play {
+    background-position: 0px -18px;
+}
+
+#play.playing {
+    background-position: 0px -38px;
+}
+
+#replay {
+    background-position: 0px -58px;
+}
+
+#back05 {
+    background-position: 0 -158px;
+}
+
+#back10 {
+    background-position: 0 -178px;
+}
+
+#back30 {
+    background-position: 0 -198px;
+}
+
+#speaker {
+    background-position: 0px -96px;
+}
+
+.controls .progress {
+    width:38%;
+    cursor:pointer;
+}
+
+.controls progress {
+    display:block;
+    width:100%;
+    height:10px;
+    margin-top:7px;
+    margin-bottom:12px;
+    border:1px solid #aaa;
+
+}
+
+.controls progress:hover:after {
+    display: block;
+    content: attr(data-hovertime);
+    color: #aaa;
+    font-size: 70%;
+    text-align: center;
+    margin-top: 2px;
+}
+
+.controls progress span {
+    width:0%;
+    height:100%;
+    display:inline-block;
+    background-color:#2a84cd;
+}
+
+/* translated text boxes */
+
+.trfields {
+    margin: 20px;
+}
+
+.trfields div {
+    width: 100%;
+    height: 50px;
+}
+
+span.label {
+    font-size: 70%;
+    display: block;
+    color: #aaa;
+    margin-bottom: 0px;
+}
+
+div.subtext {
+    position: relative;
+    width: 95%;
+    left: 2%;
+    background-color: #000;
+    height: 27px;
+    line-height: 27px;
+    color: #bbb;
+}
+
+#cn_text {
+    height: 60px;
+}
+
+#cn_text div.subtext {
+    font-size: 30px;
+    font-weight: normal;
+    line-height: 35px;
+    height: 35px;
+}
+
+#cn_text div.subtext span.mark {
+    color: #a00
+}
+
+#trbox {
+    margin: 3px;
+    display: none;
+    position: relative;
+    top: -400px;
+    left: 2%;
+    width: 95%;
+    height: 150px;
+    background-color: #ccc;
+    font-weight: normal;
+    overflow: auto;
+    box-shadow: 2px 2px 4px 0px #222;
+    padding: 3px;
+}
+
+#trbox.show {
+    display: block;
+}
+
+#trbox span.py {
+    color: #a00;
+    font-weight: bold;
+    font-family: "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace;
+}
+
+#trbox span.en {
+    margin-left: 10px;
+}
+
+/* misc */
+
+video.nocue::cue {
+    color: blue;
+    visibility: hidden;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 50px;
+    background: #0079a6;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+#demoplay {
+    margin: auto;
+    text-align: right;
+    line-height: 32px;
+    text-decoration: none;
+    padding: 0 5px 0 32px;
+    font-weight: normal;
+    display: block;
+    height: 32px;
+    width: 32px;
+    background-size: 32px;
+    background-color: transparent;
+    background-image: url('../images/controls.png');
+    background-position: 0px -32px;
+    background-repeat: no-repeat;
+}
+
+#demoplay:hover {
+    background-color: #333;
+}

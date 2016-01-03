@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<meta name="description" content="HTML5 video player with Chinese to Pinyin subtitle transcription and dictionary lookup">
+	<meta name="keywords" content="video player, Standard Chinese, Mandarin, language learning, HTML5">
+	<meta name="author" content="Tuxyme">
+
+	<link rel="apple-touch-icon" href="./images/icon.png" />
+	<link rel="shortcut icon" type="image/png" href="./images/icon.png">
+	<link rel="stylesheet" href="css/player.css">
+
+	<title>Zixue player</title>
+
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/database.js"></script>
+	<script type="text/javascript" src="js/demo_gui.js"></script>
+	<script type="text/javascript" src="js/demo_logic.js"></script>
+	<script type="text/javascript" src="extjs/jschardet-min.js"></script>
+
+
+</head>
+<body>
+
+<div id="page_main">
+	<div class='header'>
+		<button id="files" type="button"></button>
+		<input type="file" accept="video/*,.srt,.mkv,.avi,.vtt" multiple />
+		<div class='title'>Zixue player</div>
+		<button id="info" type="button" title="info"></button>
+        <button id="autopause" type="button" title="pause after subtitle change"></button>
+        <button id="showsubs" type="button" title="show subtitles in movie"></button>
+		<input id="volume" type="range" min="0" max="100">
+		<button id="speaker" type="button"></button>
+    </div>
+
+	<figure id="videoContainer">
+		<div id="intro_info" class="overlay">
+			<span>
+				<h1>ZiXue player</h1>
+				This video player is built to facilitate study of Standard Chinese and Chinese script. It accepts local
+				video and subtitle files and transcribes simplified or traditional Chinese subtitles to Pinyin.
+				Together with autopause and replay based on subtitle timing Pinyin will make it easier to understand the spoken
+				language. To assist in the translation of the subtitles the player offers a straightforward machine translation
+				and performs on demand dictionary lookup of individual characters and words.<br>
+				<h1>Using the player</h1>
+				Basic usage: click the top-left movie icon and select a video and matching subtitle file from your device. This
+				content will be played locally in the browser. Hover your mouse over the subtitles to translate characters and
+				words. Use the replay button (next to play) to repeat and pause the last subtitle.
+				See <a href="#advanced">advanced usage</a> for using traditional Chinese and multiple subtitles. <br>
+				<h1>Browser</h1>
+				The player works best in a recent version of Chrome. Other browsers work with issues or not at all, depending on
+				your system configuration and the video format. See <a href="#trouble">Browser Support</a> for more information
+				and hints to resolve video, audio and subtitle issues.<br>
+				<h1>Demo video</h1>
+				Click the demo link below to load a demo video showing the numbers 0 to 9. To return to this screen, press the info
+				icon in the header. The audio in the video was taken from
+				<a href="http://www.uvm.edu/~chinese/pinyin.htm">Chinese Phonetics</a> by John Jing-hua Yin, University of Vermont<br>
+				<br><a id='demoplay' href="#">demo</a>
+				<br><hr><br>
+				<h1>The CC-CEDICT dictionary</h1>
+				This player uses the <a href="https://www.mdbg.net/chindict/chindict.php?page=cedict">CC-CEDICT dictionary by MDBG</a>.
+				To use it, it must be downloaded and processed. This process will take a moment and starts the first time a subtitle
+				file (other than the demo) is loaded. The processed dictionary will be stored locally and is available for this player until the browser
+				local storage for the player is cleared.<br>
+				<h1>Privacy and source code</h1>
+				This player does not log or upload any information. Although the player is loaded from a website, your local
+				content is played locally and no information leaves your device. The code used for this player is unobfuscated,
+				inspectable in the browser and <a href="http://github.com/tuxyme/zixue">listed on Github</a><br>
+				<br><hr><br>
+				<h1>Advanced usage</h1><a name="advanced"></a>
+				Use the player by selecting a video and one or more subtitle (*.srt or *.vtt) files on your device. Use the top-left movie
+				icon to open the local file browser. Select all required files in one go, or select a video file and add subtitles
+				later. The last subtitle file recognized as Chinese will be used for transcription. All loaded subtitles (Chinese
+				or other languages) are displayed in the movie frame after activating the "show subtitles" option top right<br>
+				<br>
+				The subtitle language is taken from the file name. Subtitle files with names like themovie.zhs.srt and themovie.zhs.vtt are
+				recognized as simplified Chinese, while themovie.zht.srt will be recognized as traditional Chinese. Aside from
+				zhs and zht the following language identifiers are recognized: cn cns zhs zs chi chs or no identifier for Simplified
+				Chinese and cnt zht zt cht for Traditional Chinese.<br>
+				<h1>Browser Support</h1><a name="trouble"></a>
+				The video and audio formats and codecs must be supported by the browser. If the video doesn't play or no audio can
+				be heard try another browser or check if your system or browser needs to be configured to play the content. It
+				might be necessary to <a href="http://www.howtogeek.com/howto/2719/how-to-convert-video-files-formats-to-mp3-with-vlc/">
+				convert the video</a> using a tool like the opensource VLC. A safe bet is conversion of video towards MP4 using the H.264 or
+				WEBM codecs, audio to stereo AAC, MP3 or Ogg and running Chrome. Other browsers will run, but might need additional
+				configuration. If you encounter these issues, please don't blame the player or the browser. The root cause is a
+				patent mess around about everything and anything that is needed to get content to people.<br>
+				<br>
+				Subtitle character encoding is automatically detected. If subtitles look garbled, try to open the subtitles with
+				a text editor. Check the encoding (GB-2312, GB-18030, Big5). If the subtitles are readable in the editor, try
+				saving to UTF-8. Firefox subtitle transcription works, but the timing is less exact than in Chrome due to the way
+				Firefox handles	subtitle changes.<br>
+				<br>
+				<h1>Licenses</h1>
+				This software is publised under <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">GNU GPLv2</a>.
+				The dynamically loaded <a href="https://www.mdbg.net/chindict/chindict.php?page=cedict">CC-CEDICT dictionary by MDBG</a>
+				uses a Creative Commons Share-Alike license. The license for the 10 audio samples in de demo video is unspecified,
+				defaulting to old fashioned copyright.<br>
+				<br>
+				My contact information can be found at <a href="http://github.com/tuxyme">Github</a>
+
+
+			</span>
+		</div>
+		<div id="intro_proc" class="overlay">
+			<span>
+			Processing the dictionary, please wait...
+			</span>
+		</div>
+		<video id="video" class="nocue" controls preload="metadata" poster="images/film.png"></video>
+		<div class="panel">
+			<ul id="video-controls" class="controls">
+				<li><button id="play" title="play or pause" type="button"></button></li>
+				<li><button id="replay" title="back to last subtitle time" type="button"></button></li>
+				<li><button id="back05" title="back 5 secs" type="button"></button></li>
+				<li><button id="back10" title="back 10 secs" type="button"></button></li>
+				<li><button id="back30" title="back 30 secs" type="button"></button></li>
+				<li><button id="stop" title="stop" type="button"></button></li>
+				<li><span id="curTime">0:00:00</span></li>
+				<li class="progress">
+					<progress id="progress" data-hovertime="" value="0" min="0">
+						<span id="progress-bar"></span>
+					</progress>
+				</li>
+				<li><span id="totTime">0:00:00</span></li>
+				<li>
+					<select id="rate">
+						<option value="0.3">0.3</option>
+						<option value="0.4">0.4</option>
+						<option value="0.5">0.5</option>
+						<option value="0.6">0.6</option>
+						<option value="0.7">0.7</option>
+						<option value="0.8">0.8</option>
+						<option value="0.9">0.9</option>
+						<option selected value="1.0">1.0</option>
+						<option value="1.5">1.5</option>
+						<option value="2.0">2.0</option>
+						<option value="3.0">3.0</option>
+						<option value="5.0">5.0</option>
+					</select>
+				</li>
+			</ul>
+			<div class="trfields">
+				<div id="cn_text">
+					<span class="label">Chinese</span>
+					<div class="subtext"></div>
+				</div>
+
+				<div id="py_text">
+					<span class="label">Pinyin</span>
+					<div class="subtext"></div>
+				</div>
+
+				<div id="en_text">
+					<span class="label">English</span>
+					<div class="subtext"></div>
+				</div>
+
+				<div id="trbox"></div>
+			</div>
+		</div>
+	</figure>
+</div>
+
+</body>
+</html>
