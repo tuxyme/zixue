@@ -7,7 +7,7 @@ demand dictionary lookup of individual characters and words.
 
 Live install
 ============
-This player is available at http://tuxbabe.eu/player
+This player is available at [http://tuxbabe.eu/zixue.html](http://tuxbabe.eu/zixue.html)
 
 Development install
 ===================
@@ -28,7 +28,7 @@ Development install
 
 License
 =======
-This software is licensed under GNU GPLv2, see LICENSE file. 
+Eric 2016, GNU GPLv2 - see LICENSE 
 
 The player dynamically loads the
 [CC-CEDICT dictionary](https://www.mdbg.net/chindict/chindict.php?page=cedict) by MDBG. 
